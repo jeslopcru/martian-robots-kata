@@ -17,4 +17,15 @@ describe('parser', () => {
     const missionData = parser.getMissionData(userInput)
     expect(missionData).toEqual(expectedMissionData)
   });
+
+  it('should calculate map dimensions correctly, when parser getMissionData', () => {
+    const userInput = '2 3';
+    const expectedMapDimensions = {width: 2, height: 3};
+
+    const missionData = parser.getMissionData(userInput);
+
+    expect(missionData.map).toEqual(expectedMapDimensions);
+  });
+
+
 });

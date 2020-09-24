@@ -1,6 +1,7 @@
 const getMissionData = input => {
+  const lines = input.split('\n');
   return {
-    map: {width: 5, height: 3},
+    map: getMap(lines.shift()),
     robots: [
       {
         position: {x: 1, y: 1, o: 'E'},
@@ -8,6 +9,14 @@ const getMissionData = input => {
       }
     ]
   };
+
+  function getMap(rawStringData) {
+    stringData = rawStringData.split(' ')
+    return {
+      width: parseInt(stringData[0]),
+      height: parseInt(stringData[1])
+    };
+  }
 };
 
 module.exports = {
