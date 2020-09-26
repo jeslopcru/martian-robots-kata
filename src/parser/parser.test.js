@@ -19,7 +19,7 @@ describe('parser', () => {
   });
 
   it('should calculate map dimensions correctly, when parser getMissionData', () => {
-    const userInput = '2 3';
+    const userInput = '2 3\n1 1 E';
     const expectedMapDimensions = {width: 2, height: 3};
 
     const missionData = parser.getMissionData(userInput);
@@ -27,5 +27,12 @@ describe('parser', () => {
     expect(missionData.map).toEqual(expectedMapDimensions);
   });
 
+  it('should calculate robot position correctly, when parser getMissionData', () => {
+    const userInput = '2 2\n0 0 W';
+    const expectedRobotPosition = {x: 0, y: 0, o: 'W'};
 
+    const missionData = parser.getMissionData(userInput);
+
+    expect(missionData.robots[0].position).toEqual(expectedRobotPosition);
+  });
 });
