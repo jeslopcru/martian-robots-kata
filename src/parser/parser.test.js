@@ -14,8 +14,10 @@ describe('parser', () => {
         }
       ]
     };
-    const missionData = parser.getMissionData(userInput)
-    expect(missionData).toEqual(expectedMissionData)
+
+    const missionData = parser.getMissionData(userInput);
+
+    expect(missionData).toEqual(expectedMissionData);
   });
 
   it('should calculate map dimensions correctly, when parser getMissionData', () => {
@@ -44,5 +46,31 @@ describe('parser', () => {
     const missionData = parser.getMissionData(userInput);
 
     expect(missionData.robots[0].instructions).toEqual(expectedRobotInstructions);
+  });
+
+  it('should calculate instructions correctly, when parser getMissionData', () => {
+    const userInput = '2 2\n0 0 W\nRFFR';
+    const expectedRobotInstructions = ['R', 'F', 'F', 'R'];
+
+    const missionData = parser.getMissionData(userInput);
+
+    expect(missionData.robots[0].instructions).toEqual(expectedRobotInstructions);
+  });
+
+  it('should parse various robots data, when parser getMissionData', () => {
+    const userInput = '2 2\n0 0 W\nRFFR\n1 1 N\nLF';
+    const expectedFirstRobot = {
+      position: {x: 0, y: 0, o: 'W'},
+      instructions: ['R', 'F', 'F', 'R'],
+    };
+    const expectedSecondRobot = {
+      position: {x: 1, y: 1, o: 'N'},
+      instructions: ['L', 'F'],
+    };
+
+    const missionData = parser.getMissionData(userInput);
+
+    expect(missionData.robots[0]).toEqual(expectedFirstRobot);
+    expect(missionData.robots[1]).toEqual(expectedSecondRobot);
   });
 });
