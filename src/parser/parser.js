@@ -18,12 +18,16 @@ const getMissionData = input => {
     };
   }
 
+  function getInstructions(rawStringData) {
+    return rawStringData.split('');
+  }
+
   return {
     map: getMap(lines.shift()),
     robots: [
       {
         position: getPosition(lines.shift()),
-        instructions: ['R', 'F', 'R', 'F', 'R', 'F', 'R', 'F'],
+        instructions: getInstructions(lines.shift()),
       }
     ]
   };
