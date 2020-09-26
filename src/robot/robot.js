@@ -26,9 +26,16 @@ const moveFront = initialPosition => {
   }
 };
 
+const isLost = (position, chart) => {
 
+  return position.y < 0
+    || position.x < 0
+    || position.x > chart.length
+    || position.y > chart[0].length;
+};
 module.exports = {
   turnLeft,
   turnRight,
-  moveFront
+  moveFront,
+  isLost,
 }

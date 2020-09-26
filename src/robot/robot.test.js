@@ -123,4 +123,32 @@ describe('robot', () => {
     expect(PositionResult).toEqual(expectedPosition);
   });
 
+  it('should obtain true, when robot is lost', () => {
+
+    const position = {x: 5, y: 5, o: 'W'};
+    const chart = [
+      [false, false,],
+      [false, false,],
+    ];
+
+
+    const result = robot.isLost(position, chart);
+
+    expect(result).toBeTruthy();
+  });
+
+  it('should obtain true, when robot is lost', () => {
+
+    const position = {x: 1, y: 1, o: 'W'};
+    const chart = [
+      [false, false,],
+      [false, false,],
+    ];
+
+
+    const result = robot.isLost(position, chart);
+
+    expect(result).toBeFalsy();
+  });
+
 });
