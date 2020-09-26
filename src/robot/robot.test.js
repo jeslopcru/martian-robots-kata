@@ -81,4 +81,46 @@ describe('robot', () => {
 
     expect(orientationResult).toEqual(expectedOrientation);
   });
+
+
+  it('should move to next position, when moveFront North', () => {
+
+    const actualPosition = {x: 1, y: 1, o: 'N'};
+    const expectedPosition = {x: 1, y: 2, o: 'N'};
+
+    const PositionResult = robot.moveFront(actualPosition);
+
+    expect(PositionResult).toEqual(expectedPosition);
+  });
+
+  it('should move to next position, when moveFront South', () => {
+
+    const actualPosition = {x: 1, y: 1, o: 'S'};
+    const expectedPosition = {x: 1, y: 0, o: 'S'};
+
+    const PositionResult = robot.moveFront(actualPosition);
+
+    expect(PositionResult).toEqual(expectedPosition);
+  });
+
+  it('should move to next position, when moveFront West', () => {
+
+    const actualPosition = {x: 1, y: 1, o: 'W'};
+    const expectedPosition = {x: 0, y: 1, o: 'W'};
+
+    const PositionResult = robot.moveFront(actualPosition);
+
+    expect(PositionResult).toEqual(expectedPosition);
+  });
+
+  it('should move to next position, when moveFront East', () => {
+
+    const actualPosition = {x: 1, y: 1, o: 'E'};
+    const expectedPosition = {x: 2, y: 1, o: 'E'};
+
+    const PositionResult = robot.moveFront(actualPosition);
+
+    expect(PositionResult).toEqual(expectedPosition);
+  });
+
 });
