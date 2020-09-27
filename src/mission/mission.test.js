@@ -1,7 +1,7 @@
 const mission = require('./mission');
 
 describe('mission', () => {
-  it('should obtain mission results', () => {
+  it('should obtain final position whe robot move inside of chart', () => {
     const missionData = {
       map: {width: 5, height: 3},
       robots: [
@@ -12,7 +12,8 @@ describe('mission', () => {
       ]
     };
 
-    const expectedMissionResults = [[1, 1, 'E', false]];
+    const expectedMissionResults = {x: 1, y: 1, o: 'E'};
+    
 
     const missionResults = mission.execute(missionData);
 
