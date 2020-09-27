@@ -18,12 +18,15 @@ function movement(command, robotData, chartData) {
 const execute = mission => {
   const chartData = chart.create(mission.map);
 
-  const initial = mission.robots[0];
-  let final = {position: mission.robots[0].position, isLost: false};
-  initial.instructions.forEach(command => {
-    final = movement(command, final, chartData);
-  });
-  return final;
+  let result = [];
+  for (const initial of mission.robots) {
+    let final = {position: initial.position, isLost: false};
+    initial.instructions.forEach(command => {
+      final = movement(command, final, chartData);
+    });
+    result.push(final);
+  }
+  return result;
 }
 module.exports = {
   execute
