@@ -13,5 +13,6 @@ run: ## run app
 	@docker-compose run app
 bash: ## open bash
 	@docker-compose run app bash
-
+test: ## run test
+	@docker-compose run app npm test
 
